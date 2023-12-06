@@ -1,0 +1,33 @@
+@mixin flex($fd:null, $jc:null, $ai:null) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: white;
+    list-style: none;
+}
+
+body {
+    font-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: black;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 8;
+    background: linear-gradient(rgba(0,0,0,0.7), 60%, transparent);
+}
+
+a {
+    cursor: pointer;
+}
+
