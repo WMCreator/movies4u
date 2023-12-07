@@ -1,3 +1,5 @@
+$green: #00923A;
+
 @mixin flex($fd:null, $jc:null, $ai:null) {
     display: flex;
     flex-direction: $fd;
@@ -31,3 +33,325 @@ a {
     cursor: pointer;
 }
 
+.for_mobile {
+    display: none;
+}
+
+.navbar {
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr 1fr auto;
+
+    &__logo {
+        @include flex(null, center, center);
+        gap: 1.2rem;
+        
+        &--icon {
+            width: 3rem;
+        }
+
+        &--text {
+            font-size: 1.2em;
+            font-weight: 900;
+        }
+    }
+
+    &__menu {
+        @include flex(null, space-around, center);
+
+        &--button {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        &--mobile {
+            width: 2rem;
+            background: none;
+            border: none;
+            img {
+                width: 2rem;
+            }
+        }
+    }
+
+    &__search {
+        width: 80%;
+        justify-self: center;
+        padding: 0.8rem 1.2rem;
+        @include flex(null, space-between, center);
+        border-radius: 2rem;
+        background-color: rgba(255, 255, 255, 0.4);
+        
+        &--input {
+            width: 90%;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            background: none;
+            color: white;
+            
+            &:focus {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: white;
+            }
+        }
+    }
+
+    &__account {
+        &--icon {
+            width: 2.5rem;
+        }
+    }
+}
+
+.banner__container {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    display: flex;
+    gap: 5rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.movie {
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    scroll-snap-align: center;
+
+    &__background {
+        width: 100%;
+        height: 100svh;
+        object-fit: cover;
+        filter: brightness(0.4) blur(2px);
+    }
+
+    &__info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        width: 100%;
+        max-width: 1100px;
+        display: flex;
+        gap: 5%;
+    }
+
+    &__cover {
+        align-self: center;
+        width: 30%;
+        border-radius: 2rem;
+    }
+
+    &__description {
+        display: grid;
+        place-content: center;
+        grid-gap: 2rem;
+
+        &--title {
+            h2 {
+                font-size: 2.2em;
+                margin-bottom: 0.5rem;
+            }
+            
+            div {
+                @include flex(null, null, center);
+                gap: 5%;
+            }
+        }
+
+        &--year {
+            font-size: 1.5em;
+        }
+
+        &--tag {
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 1em;
+            font-weight: bold;
+            background-color: $green;
+        }
+
+        &--text {
+            font-size: 1.4em;
+            line-height: 1.5em;
+        }
+
+        &--button {
+            width: 30%;
+            min-width: 215px; 
+            height: 3rem;
+            align-self: center;
+            @include flex(null, center, center);
+            gap: 1rem;
+            font-size: 1.2em;
+            font-weight: bold;
+            font-family: 'Montserrat';
+            border: none;
+            border-radius: 2rem;
+            background-color: #00923A;
+        }
+    }
+}
+
+.dots_container {
+    position: absolute;
+    display: flex;
+    gap: 4rem;
+    z-index: 1;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    &--active {
+        background-color: #5B35DE;
+    }
+}
+
+@media (max-width: 1300px) {
+    .movie {
+        &__info {
+            width: 80%;
+        }
+
+        &__description {
+            grid-gap: 1rem;
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            &--text {
+                font-size: 1.1em;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        &__logo--text {
+            display: none;
+        }
+
+        &__menu {
+            &--button {
+                font-size: 1em;
+            }
+        }
+
+        &__search {
+            height: 2rem;
+            font-size: 0.8em;
+        }
+    }
+
+    .movie {
+        &__description {
+            &--title {
+                h2 {
+                    font-size: 1.2em;
+                }
+            }
+
+            &--year {
+                font-size: 1em;
+            }
+
+            &--text {
+                font-size: 1em;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .for_desktop {
+        display: none;
+    }
+
+    .for_mobile {
+        display: block;
+    }
+
+    .navbar {
+        grid-template-columns: auto 1fr auto;
+
+        &__logo {
+            &--icon {
+                width: 2rem;
+            }
+        }
+    }
+
+    .movie {
+        &__info {
+            flex-direction: column;
+        }
+
+        &__cover {
+            border-radius: 1rem;
+        }
+
+        &__description {
+            text-align: center;
+            grid-gap: 0rem;
+
+            div {
+                justify-content: center;
+            }
+
+            &--title {
+                margin: 1rem 0;
+
+                h2 {
+                    font-size: 1.2em;
+                }
+            }
+
+            &--year {
+                font-size: 1.1em;
+            }
+
+            &--tag {
+                font-size: 0.8em;
+            }
+
+            &--text {
+                font-size: 0.8em;
+            }
+
+            &--button {
+                min-width: 125px;
+                height: 2rem;
+                margin: 1rem 0 0 0;
+                justify-self: center;
+                font-size: 0.8rem;
+
+                img {
+                    width: 0.8rem;
+                }
+            }
+        }
+    }
+}
