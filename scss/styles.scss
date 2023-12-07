@@ -1,4 +1,5 @@
 $green: #00923A;
+$primary-color: #5B35DE;
 
 @mixin flex($fd:null, $jc:null, $ai:null) {
     display: flex;
@@ -30,6 +31,10 @@ header {
 }
 
 a {
+    cursor: pointer;
+}
+
+button {
     cursor: pointer;
 }
 
@@ -118,6 +123,7 @@ a {
     display: flex;
     gap: 5rem;
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
 
     &::-webkit-scrollbar {
@@ -202,7 +208,7 @@ a {
             font-family: 'Montserrat';
             border: none;
             border-radius: 2rem;
-            background-color: #00923A;
+            background-color: $primary-color;
         }
     }
 }
@@ -226,6 +232,10 @@ a {
     &--active {
         background-color: #5B35DE;
     }
+}
+
+.categories {
+    padding: 5rem;
 }
 
 @media (max-width: 1300px) {

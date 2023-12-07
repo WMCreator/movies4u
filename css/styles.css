@@ -24,6 +24,10 @@ a {
   cursor: pointer;
 }
 
+button {
+  cursor: pointer;
+}
+
 .for_mobile {
   display: none;
 }
@@ -102,6 +106,7 @@ a {
   display: flex;
   gap: 5rem;
   overflow-x: scroll;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
 }
 .banner__container::-webkit-scrollbar {
@@ -178,7 +183,7 @@ a {
   font-family: "Montserrat";
   border: none;
   border-radius: 2rem;
-  background-color: #00923A;
+  background-color: #5B35DE;
 }
 
 .dots_container {
@@ -199,6 +204,10 @@ a {
 }
 .dot--active {
   background-color: #5B35DE;
+}
+
+.categories {
+  padding: 5rem;
 }
 
 @media (max-width: 1300px) {
