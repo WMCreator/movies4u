@@ -106,7 +106,6 @@ button {
   display: flex;
   gap: 5rem;
   overflow-x: scroll;
-  overflow-y: hidden;
   scroll-snap-type: x mandatory;
 }
 .banner__container::-webkit-scrollbar {
@@ -117,6 +116,7 @@ button {
   width: 100%;
   flex-shrink: 0;
   position: relative;
+  overflow-y: hidden;
   scroll-snap-align: center;
 }
 .movie__background {
@@ -208,6 +208,59 @@ button {
 
 .categories {
   padding: 5rem;
+  background-color: #250043;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+.categories h1 {
+  font-size: 2em;
+}
+.categories__container {
+  max-width: 1300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.categories__button {
+  display: flex;
+  padding: 0.5rem 3rem;
+  border-radius: 5rem;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.categories__button--action {
+  background-color: #B4A200;
+}
+.categories__button--romance {
+  background-color: #DD00BA;
+}
+.categories__button--adventure {
+  background-color: #D00000;
+}
+.categories__button--scifi {
+  background-color: #00923A;
+}
+.categories__button--drama {
+  background-color: #555555;
+}
+.categories__button--comedy {
+  background-color: #FF4357;
+}
+.categories__button--fantasy {
+  background-color: #5E6EFF;
+}
+.categories__button--terror {
+  background-color: #000000;
+}
+.categories__button--crime {
+  background-color: #920000;
 }
 
 @media (max-width: 1300px) {
@@ -274,9 +327,6 @@ button {
   .movie__description--title {
     margin: 1rem 0;
   }
-  .movie__description--title h2 {
-    font-size: 1.2em;
-  }
   .movie__description--year {
     font-size: 1.1em;
   }
@@ -295,6 +345,10 @@ button {
   }
   .movie__description--button img {
     width: 0.8rem;
+  }
+  .categories__button {
+    width: 100%;
+    padding: 1rem;
   }
 }
 
