@@ -358,15 +358,16 @@ button {
 
 .footer {
     width: 100%;
-    height: 50svh;
 
     &__container {
         width: 100%;
         height: 100%;
-        padding: 25%;
+        padding: 5rem 0;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         place-content: center;
+        align-items: center;
+        justify-items: center;
     }
 
     &__logo {

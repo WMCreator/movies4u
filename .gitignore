@@ -1,2 +1,4 @@
 *.png
 *.jpg
+/node_modules
+api-key.js
