@@ -27,7 +27,6 @@ header {
     width: 100%;
     position: fixed;
     z-index: 8;
-    background: linear-gradient(rgba(0,0,0,0.7), 60%, transparent);
 }
 
 a {
@@ -50,6 +49,7 @@ button {
     align-items: center;
     grid-auto-flow: column;
     grid-template-columns: auto 1fr 1fr auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
 
     &__logo {
         @include flex(null, center, center);
@@ -74,7 +74,6 @@ button {
         }
 
         &--mobile {
-            width: 2rem;
             background: none;
             border: none;
             img {
@@ -301,6 +300,94 @@ button {
     }
 }
 
+.trending {
+    padding: 5rem;
+    font-size: 1.2em;
+    background-color: #300D4D;
+    display: grid;
+    gap: 5rem;
+
+    &__container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+        grid-auto-rows: 1fr;
+        place-items: center;
+        gap: 2rem;
+    }
+
+    &__movie {
+        position: relative;
+        border-radius: 1rem;
+        width: 12.5rem;
+
+        &--add {
+            width: 12.5%;
+            position: absolute;
+            left: 83%;
+            top: 3%;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.new {
+    @extend .trending;
+    background-color: #250043;
+
+
+    &__container {
+        @extend .trending__container;
+    }
+
+    &__movie {
+        @extend .trending__movie;
+
+        &--add {
+            @extend .trending__movie--add;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.footer {
+    width: 100%;
+    height: 50svh;
+
+    &__container {
+        width: 100%;
+        height: 100%;
+        padding: 25%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-content: center;
+    }
+
+    &__logo {
+        width: 100%;
+        padding-right: 2rem;
+        display: flex;
+        justify-content: center;
+        border-right: 5px solid white;
+
+        img {
+            width: 8rem;
+        }
+    }
+
+    &__info {
+        h3 {
+            padding-left: 2rem;
+        }
+    }
+}
+
 @media (max-width: 1300px) {
     .movie {
         &__info {
@@ -425,9 +512,34 @@ button {
     }
 
     .categories {
+        width: 100%;
+        padding: 5rem 1rem;
+
+        &__container {
+            display: grid;
+            grid-template-columns: repeat(2, max(1fr));
+            place-content: center;
+            gap: 1rem;
+        }
+
         &__button {
-            width: 100%;
-            padding: 1rem;
+            font-size: 0.8em;
+        }
+    }
+
+    .trending {
+        text-align: center;
+        place-content: center;
+        padding: 5rem 1rem;
+        padding-right: 0;
+
+        &__container {
+            display: flex;
+            overflow-x: scroll;
+        }
+
+        &__movie {
+            width: 9rem;
         }
     }
 }

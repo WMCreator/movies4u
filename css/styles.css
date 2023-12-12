@@ -17,7 +17,6 @@ header {
   width: 100%;
   position: fixed;
   z-index: 8;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), 60%, transparent);
 }
 
 a {
@@ -40,6 +39,7 @@ button {
   align-items: center;
   grid-auto-flow: column;
   grid-template-columns: auto 1fr 1fr auto;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
 }
 .navbar__logo {
   display: flex;
@@ -64,7 +64,6 @@ button {
   font-weight: bold;
 }
 .navbar__menu--mobile {
-  width: 2rem;
   background: none;
   border: none;
 }
@@ -263,6 +262,69 @@ button {
   background-color: #920000;
 }
 
+.trending, .new {
+  padding: 5rem;
+  font-size: 1.2em;
+  background-color: #300D4D;
+  display: grid;
+  gap: 5rem;
+}
+.trending__container, .new__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  grid-auto-rows: 1fr;
+  place-items: center;
+  gap: 2rem;
+}
+.trending__movie, .new__movie {
+  position: relative;
+  border-radius: 1rem;
+  width: 12.5rem;
+}
+.trending__movie--add, .new__movie--add {
+  width: 12.5%;
+  position: absolute;
+  left: 83%;
+  top: 3%;
+}
+.trending__movie--add img, .new__movie--add img {
+  width: 100%;
+}
+
+.new {
+  background-color: #250043;
+}
+.new__movie--add img {
+  width: 100%;
+}
+
+.footer {
+  width: 100%;
+  height: 50svh;
+}
+.footer__container {
+  width: 100%;
+  height: 100%;
+  padding: 25%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-content: center;
+}
+.footer__logo {
+  width: 100%;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: center;
+  border-right: 5px solid white;
+}
+.footer__logo img {
+  width: 8rem;
+}
+.footer__info h3 {
+  padding-left: 2rem;
+}
+
 @media (max-width: 1300px) {
   .movie__info {
     width: 80%;
@@ -346,9 +408,31 @@ button {
   .movie__description--button img {
     width: 0.8rem;
   }
-  .categories__button {
+  .categories {
     width: 100%;
-    padding: 1rem;
+    padding: 5rem 1rem;
+  }
+  .categories__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+    gap: 1rem;
+  }
+  .categories__button {
+    font-size: 0.8em;
+  }
+  .trending, .new {
+    text-align: center;
+    place-content: center;
+    padding: 5rem 1rem;
+    padding-right: 0;
+  }
+  .trending__container, .new__container {
+    display: flex;
+    overflow-x: scroll;
+  }
+  .trending__movie, .new__movie {
+    width: 9rem;
   }
 }
 
