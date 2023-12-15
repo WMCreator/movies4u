@@ -39,7 +39,7 @@ button {
   align-items: center;
   grid-auto-flow: column;
   grid-template-columns: auto 1fr 1fr auto;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(rgba(0, 0, 0, 0.6), 50%, transparent);
 }
 .navbar__logo {
   display: flex;
@@ -122,6 +122,7 @@ button {
   width: 100%;
   height: 100svh;
   object-fit: cover;
+  object-position: center;
   filter: brightness(0.4) blur(2px);
 }
 .movie__info {
@@ -379,6 +380,7 @@ button {
   }
   .movie__cover {
     border-radius: 1rem;
+    width: 40%;
   }
   .movie__description {
     text-align: center;
