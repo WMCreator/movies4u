@@ -3,26 +3,15 @@ const bannerMoviesId = [];
 
 let movieWidth;
 
-async function getBannerMovies() {
-    try {
-        const res = await fetch(`${API_URL}/trending/movie/week?api_key=${API_KEY}&language=es-MX`);
-        const data = await res.json();
-    
-        const banners = data.results.slice(0, 3);
-
-        banners.forEach(movie => {
-            bannerMoviesId.push(movie.id);
-        });
-
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 async function createBannerMovies() {
-    await getBannerMovies();
+    const bannersData = await getPopularMovies('day');
+    const banners = bannersData.results.slice(0, 3);
 
-    bannerMoviesId.forEach(async id => {
+    banners.forEach(movie => {
+        bannerMoviesId.push(movie.id);
+    });
+
+    bannerMoviesId.forEach(async (id, i) => {
         try {
             const getMovieData = await fetch(`${API_URL}/movie/${id}?api_key=${API_KEY}&language=es-MX`);
             const movie = await getMovieData.json();
@@ -32,56 +21,42 @@ async function createBannerMovies() {
             const trailer = trailerData.results.find(result => result.type == "Trailer");
             console.log(trailer);
 
-            let html;
+            const html = `
+                <section class="banner__movie movie">
+                    <img class="movie__background" src="${API_IMAGES}/${movie.backdrop_path}" alt="${movie.title}">
+                    <div class="movie__info">
+                        <img class="movie__cover" src="${API_IMAGES}/${movie.poster_path}" alt="${movie.title}">
+                        <div class="movie__description movie${i}__description">
+                            <div class="movie__description--title">
+                                <h2>${movie.title}</h2>
+                                <div>
+                                    <p class="movie__description--year">${movie.release_date.split('-')[0]}</p>
+                                    <p class="movie__description--tag">${movie.genres[0].name}</p>
+                                </div>
+                            </div>
+                            <p class="movie__description--text">${movie.overview}</p>
+                        </div>
+                    </div>
+                </section>
+            `;
 
-            if(!trailer) {
-                html = `
-                    <section class="banner__movie movie">
-                        <img class="movie__background" src="${API_IMAGES}/${movie.backdrop_path}" alt="${movie.title}">
-                        <div class="movie__info">
-                            <img class="movie__cover" src="${API_IMAGES}/${movie.poster_path}" alt="${movie.title}">
-                            <div class="movie__description">
-                                <div class="movie__description--title">
-                                    <h2>${movie.title}</h2>
-                                    <div>
-                                        <p class="movie__description--year">${movie.release_date.split('-')[0]}</p>
-                                        <p class="movie__description--tag">${movie.genres[0].name}</p>
-                                    </div>
-                                </div>
-                                <p class="movie__description--text">${movie.overview}</p>
-                            </div>
-                        </div>
-                    </section>
-                `
-            } else {
-                html = `
-                    <section class="banner__movie movie">
-                        <img class="movie__background" src="${API_IMAGES}/${movie.backdrop_path}" alt="${movie.title}">
-                        <div class="movie__info">
-                            <img class="movie__cover" src="${API_IMAGES}/${movie.poster_path}" alt="${movie.title}">
-                            <div class="movie__description">
-                                <div class="movie__description--title">
-                                    <h2>${movie.title}</h2>
-                                    <div>
-                                        <p class="movie__description--year">${movie.release_date.split('-')[0]}</p>
-                                        <p class="movie__description--tag">${movie.genres[0].name}</p>
-                                    </div>
-                                </div>
-                                <p class="movie__description--text">${movie.overview}</p>
-                                <button onclick="location.href='${MOVIE_TRAILER}${trailer.key}'" class="movie__description--button">
-                                    <img class="movie__button--img" src="./assets/svg/play-icon.svg" alt="">
-                                    Ver Tráiler
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-                `
+            bannerContainer.innerHTML += html;
+            
+            if(trailer) {
+                const movieDescription = document.querySelector(`.movie${i}__description`);
+                const trailerButton = `
+                    <button onclick="location.href='${MOVIE_TRAILER}${trailer.key}'" class="movie__description--button">
+                        <img class="movie__button--img" src="./assets/svg/play-icon.svg" alt="">
+                        Ver Tráiler
+                    </button>
+                `;
+
+                movieDescription.innerHTML += trailerButton;
             }
-
-            bannerContainer.innerHTML += html
+            
             movieWidth = document.querySelector('.movie').offsetWidth;
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     })
 }
