@@ -13,13 +13,15 @@ async function createBannerMovies() {
 
     bannerMoviesId.forEach(async (id, i) => {
         try {
-            const getMovieData = await fetch(`${API_URL}/movie/${id}?api_key=${API_KEY}&language=es-MX`);
-            const movie = await getMovieData.json();
+            const { data: movie } = await API(`/movie/${id}`)
 
-            const getTrailerData = await fetch(`${API_URL}/movie/${id}/videos?api_key=${API_KEY}&language=es-MX`);
-            const trailerData = await getTrailerData.json();
+            const { data: trailerData } = await API(`/movie/${id}/videos`)
             const trailer = trailerData.results.find(result => result.type == "Trailer");
-            console.log(trailer);
+
+            if(movie.overview.length >= 400) {
+                const sentences = movie.overview.split('.').slice(0, 2);
+                movie.overview = sentences.join('. ') + '.';
+            }
 
             const html = `
                 <section class="banner__movie movie">
@@ -31,7 +33,7 @@ async function createBannerMovies() {
                                 <h2>${movie.title}</h2>
                                 <div>
                                     <p class="movie__description--year">${movie.release_date.split('-')[0]}</p>
-                                    <p class="movie__description--tag">${movie.genres[0].name}</p>
+                                    <p class="movie__description--tag category--${await getCategoryClassName(movie.genres[0].id)}">${movie.genres[0].name}</p>
                                 </div>
                             </div>
                             <p class="movie__description--text">${movie.overview}</p>

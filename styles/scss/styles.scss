@@ -188,7 +188,6 @@ button {
             border-radius: 2rem;
             font-size: 1em;
             font-weight: bold;
-            background-color: $green;
         }
 
         &--text {
@@ -259,45 +258,84 @@ button {
         text-align: center;
         font-weight: bold;
         font-size: 1.2em;
+    }
+}
 
-        &--action {
-            background-color: #B4A200;
-        }
-
-        &--romance {
-            background-color: #DD00BA;
-
-        }
-
-        &--adventure {
-            background-color: #D00000;
-
-        }
-
-        &--scifi {
-            background-color: #00923A;
-        }
-
-        &--drama {
-            background-color: #555555;
-
-        }
-
-        &--comedy {
-            background-color: #FF4357;
-        }
-
-        &--fantasy {
-            background-color: #5E6EFF;
-        }
-
-        &--terror {
-            background-color: #000000;
-        }
-
-        &--crime {
-            background-color: #920000;
-        }
+.category {
+    &--action {
+        background-color: #990000;
+    }
+    
+    &--adventure {
+        background-color: #994C00;
+    }
+    
+    &--animation {
+        background-color: #004D00;
+    }
+    
+    &--comedy {
+        background-color: #999900;
+    }
+    
+    &--crime {
+        background-color: #660099; 
+    }
+    
+    &--documentary {
+        background-color: #404040;
+    }
+    
+    &--drama {
+        background-color: #4C0000;
+    }
+    
+    &--family {
+        background-color: #994D4D;
+    }
+    
+    &--fantasy {
+        background-color: #336699;
+    }
+    
+    &--history {
+        background-color: #00004D;
+    }
+    
+    &--horror {
+        background-color: #000000;
+    }
+    
+    &--music {
+        background-color: #996300;
+    }
+    
+    &--mystery {
+        background-color: #666633;
+    }
+    
+    &--romance {
+        background-color: #990066;
+    }
+    
+    &--science-fiction {
+        background-color: #006666;
+    }
+    
+    &--tv-movie {
+        background-color: #333366;
+    }
+    
+    &--thriller {
+        background-color: #003300;
+    }
+    
+    &--war {
+        background-color: #000066;
+    }
+    
+    &--western {
+        background-color: #994D00;
     }
 }
 
@@ -335,7 +373,7 @@ button {
     }
 }
 
-.new {
+.upcoming {
     @extend .trending;
     background-color: #250043;
 
@@ -519,13 +557,11 @@ button {
         padding: 5rem 1rem;
 
         &__container {
-            display: grid;
-            grid-template-columns: repeat(2, max(1fr));
-            place-content: center;
             gap: 1rem;
         }
 
         &__button {
+            padding: 0.5rem 2rem;
             font-size: 0.8em;
         }
     }

@@ -163,7 +163,6 @@ button {
   border-radius: 2rem;
   font-size: 1em;
   font-weight: bold;
-  background-color: #00923A;
 }
 .movie__description--text {
   font-size: 1.4em;
@@ -235,42 +234,73 @@ button {
   font-weight: bold;
   font-size: 1.2em;
 }
-.categories__button--action {
-  background-color: #B4A200;
+
+.category--action {
+  background-color: #990000;
 }
-.categories__button--romance {
-  background-color: #DD00BA;
+.category--adventure {
+  background-color: #994C00;
 }
-.categories__button--adventure {
-  background-color: #D00000;
+.category--animation {
+  background-color: #004D00;
 }
-.categories__button--scifi {
-  background-color: #00923A;
+.category--comedy {
+  background-color: #999900;
 }
-.categories__button--drama {
-  background-color: #555555;
+.category--crime {
+  background-color: #660099;
 }
-.categories__button--comedy {
-  background-color: #FF4357;
+.category--documentary {
+  background-color: #404040;
 }
-.categories__button--fantasy {
-  background-color: #5E6EFF;
+.category--drama {
+  background-color: #4C0000;
 }
-.categories__button--terror {
+.category--family {
+  background-color: #994D4D;
+}
+.category--fantasy {
+  background-color: #336699;
+}
+.category--history {
+  background-color: #00004D;
+}
+.category--horror {
   background-color: #000000;
 }
-.categories__button--crime {
-  background-color: #920000;
+.category--music {
+  background-color: #996300;
+}
+.category--mystery {
+  background-color: #666633;
+}
+.category--romance {
+  background-color: #990066;
+}
+.category--science-fiction {
+  background-color: #006666;
+}
+.category--tv-movie {
+  background-color: #333366;
+}
+.category--thriller {
+  background-color: #003300;
+}
+.category--war {
+  background-color: #000066;
+}
+.category--western {
+  background-color: #994D00;
 }
 
-.trending, .new {
+.trending, .upcoming {
   padding: 5rem;
   font-size: 1.2em;
   background-color: #300D4D;
   display: grid;
   gap: 5rem;
 }
-.trending__container, .new__container {
+.trending__container, .upcoming__container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
@@ -278,25 +308,25 @@ button {
   place-items: center;
   gap: 2rem;
 }
-.trending__movie, .new__movie {
+.trending__movie, .upcoming__movie {
   position: relative;
   border-radius: 1rem;
   width: 12.5rem;
 }
-.trending__movie--add, .new__movie--add {
+.trending__movie--add, .upcoming__movie--add {
   width: 12.5%;
   position: absolute;
   left: 83%;
   top: 3%;
 }
-.trending__movie--add img, .new__movie--add img {
+.trending__movie--add img, .upcoming__movie--add img {
   width: 100%;
 }
 
-.new {
+.upcoming {
   background-color: #250043;
 }
-.new__movie--add img {
+.upcoming__movie--add img {
   width: 100%;
 }
 
@@ -416,25 +446,23 @@ button {
     padding: 5rem 1rem;
   }
   .categories__container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    place-content: center;
     gap: 1rem;
   }
   .categories__button {
+    padding: 0.5rem 2rem;
     font-size: 0.8em;
   }
-  .trending, .new {
+  .trending, .upcoming {
     text-align: center;
     place-content: center;
     padding: 5rem 1rem;
     padding-right: 0;
   }
-  .trending__container, .new__container {
+  .trending__container, .upcoming__container {
     display: flex;
     overflow-x: scroll;
   }
-  .trending__movie, .new__movie {
+  .trending__movie, .upcoming__movie {
     width: 9rem;
   }
 }
